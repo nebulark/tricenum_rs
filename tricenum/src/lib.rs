@@ -9,5 +9,6 @@ pub use enum_iterator::EnumIterator;
 pub use tricenum_derive::TrivialEnum;
 pub use trivial_enum::TrivialEnum;
 pub use enum_bitset::EnumBitset;
+pub use vector_math::{Vector, VectorMath};
 
 
