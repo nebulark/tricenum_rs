@@ -14,8 +14,8 @@ pub trait VectorMath {
     );
 }
 
-#[derive(Copy, Clone, Debug)]
-pub struct Vector<A>(A);
+#[derive(Copy, Clone, Debug, Default)]
+pub struct Vector<A>(pub A);
 
 impl<A> From<A> for Vector<A> {
     fn from(value: A) -> Self {
@@ -128,5 +128,16 @@ where
 {
     fn div_assign(&mut self, rhs: Self) {
         self.0.assign_zip_with(rhs.0, |a, b| *a /= b);
+    }
+}
+
+
+impl<A, E, I> FromIterator<I> for Vector<A>
+where
+    A: VectorMath<ElementType = E> + FromIterator<I>,
+{
+    fn from_iter<T: IntoIterator<Item = I>>(iter: T) -> Self {
+        let a : A = iter.into_iter().collect();
+        a.into()
     }
 }

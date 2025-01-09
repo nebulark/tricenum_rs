@@ -3,8 +3,9 @@ use std::{marker::PhantomData, ops};
 use crate::{vector_math::VectorMath, TrivialEnum};
 
 #[repr(transparent)]
+#[derive(Clone, Copy, Debug)]
 pub struct EnumArray<E: TrivialEnum, T, const N: usize> {
-    values: [T; N],
+    pub values: [T; N],
     key: PhantomData<E>,
 }
 
