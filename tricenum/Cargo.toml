@@ -1,0 +1,9 @@
+[package]
+name = "tricenum"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tricenum_derive = { path = "../tricenum_derive", version = "*" }
+
+
